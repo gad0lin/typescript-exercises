@@ -1,5 +1,6 @@
-import chalk from 'chalk';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var chalk_1 = require("chalk");
 /*
 
 Intro:
@@ -25,8 +26,7 @@ Run this exercise:
     yarn -s 0
 
 */
-
-const users: User[] = [
+var users = [
     {
         name: 'Max Mustermann',
         age: 25,
@@ -38,18 +38,10 @@ const users: User[] = [
         occupation: 'Astronaut'
     }
 ];
-
-interface User {
-    name: string,
-    age: number,
-    occupation: string
+function logPerson(user) {
+    console.log(" - " + chalk_1.default.green(user.name) + ", " + user.age);
 }
-function logPerson(user: User) {
-    console.log(` - ${chalk.green(user.name)}, ${user.age}`);
-}
-
-console.log(chalk.yellow('Users:'));
+console.log(chalk_1.default.yellow('Users:'));
 users.forEach(logPerson);
-
 // In case if you are stuck:
 // https://www.typescriptlang.org/docs/handbook/interfaces.html#introduction

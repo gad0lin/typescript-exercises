@@ -63,8 +63,11 @@ function logPerson(person: Person) {
         ` - ${chalk.green(person.name)}, ${person.age}, ${person.type === 'admin' ? person.role : person.occupation}`
     );
 }
+function filterPersons(persons: Person[], personType: 'admin', criteria: { [P in keyof Admin]?: Admin[P] }): Admin[];
+function filterPersons(persons: Person[], personType: 'user' , criteria: { [P in keyof User]?: User[P] }): User[];
 
-function filterPersons(persons: Person[], personType: string, criteria: unknown): unknown[] {
+
+function filterPersons(persons: Person[], personType: string, criteria: any): any[] {
     return persons
         .filter((person) => person.type === personType)
         .filter((person) => {

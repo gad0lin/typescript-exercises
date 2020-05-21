@@ -77,7 +77,10 @@ async function testUsersDatabase() {
 
     expect(await usersDatabase.find({age: {$eq: 31}, name: {$eq: 'Inspector Gadget'}}, {projection: {occupation: 1}}))
         .to.eql([{occupation: 'Undercover'}]);
-    expect(await usersDatabase.find({}, {projection: {name: 1, occupation: 1}, sort: {_id: 1}}))
+    let result = await usersDatabase.find({}, {projection: {name: 1, occupation: 1}, sort: {_id: 1}});
+    
+    console.log(JSON.stringify(result))
+    expect(result)
         .to.eql([
             {"name": "Max Mustermann", "occupation": "Chimney sweep"},
             {"name": "Kate Müller", "occupation": "Astronaut"},

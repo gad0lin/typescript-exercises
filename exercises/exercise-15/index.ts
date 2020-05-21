@@ -87,12 +87,19 @@ async function testUsersDatabase() {
     expect(
         await usersDatabase.find({occupation: {$eq: 'Actor'}}, {sort: {age: 1}, projection: {_id: 1}})
     ).to.eql([{_id: 12}, {_id: 11}]);
+    console.log("a  edddbcd")
 
+    let entries = await usersDatabase.find({}, {sort: {_id: -1}})
+    console.log("entires ", entries)
+    let fr =  (await usersDatabase.find({}, {sort: {_id: -1}, projection: {_id: 1}})).map(({_id}) => _id)
+    // console.log(fr)
     expect(
         (await usersDatabase.find({}, {sort: {_id: -1}, projection: {_id: 1}})).map(({_id}) => _id)
     ).to.eql([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2]);
 
     await usersDatabase.delete({_id: {$gt: 5}});
+
+    console.log("abcd")
 
     expect(
         (await usersDatabase.find({}, {sort: {_id: -1}, projection: {_id: 1}})).map(({_id}) => _id)

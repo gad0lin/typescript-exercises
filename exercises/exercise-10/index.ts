@@ -4,7 +4,7 @@ import {
     strToLower,
     strToUpper,
     strRandomize,
-    strInvertCase
+    strInvertCase,
 } from 'str-utils';
 
 /*
